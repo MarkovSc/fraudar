@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fraudar.export.greedy &mdash; Wrapper of FRAUDAR algorithm 0.5.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within Wrapper of FRAUDAR algorithm 0.5.0 documentation" href="../../../_static/opensearch.xml"/>
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Wrapper of FRAUDAR algorithm 0.5.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/>
+  
+  
+  
+  <meta name="title" content="Wrapper of FRAUDAR algorithm 0.5.0 documentation"/>
+  <meta name="keywords" content="review,data mining,レビュー,マイニング"/>
+  
+
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Wrapper of FRAUDAR algorithm 0.5.0 documentation"/>
+  
+  <meta property="og:image" content="https://avatars0.githubusercontent.com/u/22570694" />
+
+  
+  <meta content="summary" name="twitter:card" />
+  <meta content="@junkawamoto" name="twitter:site" />
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4734862314145555",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-82315630-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Wrapper of FRAUDAR algorithm
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+  <div class="local-toc"></div>
+  <hr/>
+  <a href="https://rgmining.github.io/">Review Graph Mining</a>
+  <hr/>
+  <div>
+    <div style="width: 300px; margin: auto;">
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:600px"
+           data-ad-client="ca-pub-4734862314145555"
+           data-ad-slot="6934003829"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Wrapper of FRAUDAR algorithm</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>fraudar.export.greedy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for fraudar.export.greedy</h1><div class="highlight"><pre>
+<span></span><span class="c1"># FRAUDAR: Bounding Graph Fraud in the Face of Camouflage</span>
+<span class="c1"># Authors: Bryan Hooi, Hyun Ah Song, Alex Beutel, Neil Shah, Kijung Shin, Christos Faloutsos</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under Apache License, Version 2.0 (the  &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1"># http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="c1"># Version: 1.0</span>
+<span class="c1"># Date: Oct 3, 2016</span>
+<span class="c1"># Main Contact: Bryan Hooi (bhooi@andrew.cmu.edu)</span>
+
+
+<span class="c1"># contains functions that run the greedy detector for dense regions in a sparse matrix.</span>
+<span class="c1"># use aveDegree or sqrtWeightedAveDegree or logWeightedAveDegree on a sparse matrix,</span>
+<span class="c1"># which returns ((rowSet, colSet), score) for the most suspicious block.</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
+<span class="c1"># from sklearn.decomposition import TruncatedSVD</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">sparse</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <span class="n">shuffle</span>
+<span class="kn">from</span> <span class="nn">MinTree</span> <span class="k">import</span> <span class="n">MinTree</span>
+<span class="kn">import</span> <span class="nn">cPickle</span> <span class="k">as</span> <span class="nn">pickle</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>
+
+<span class="c1"># given a list of lists where each row is an edge, this returns the sparse matrix representation of the data.</span>
+<span class="c1"># @profile</span>
+<div class="viewcode-block" id="listToSparseMatrix"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.listToSparseMatrix">[docs]</a><span class="k">def</span> <span class="nf">listToSparseMatrix</span><span class="p">(</span><span class="n">edgesSource</span><span class="p">,</span> <span class="n">edgesDest</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">edgesSource</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">edgesDest</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(([</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">edgesSource</span><span class="p">),</span> <span class="p">(</span><span class="n">edgesSource</span><span class="p">,</span> <span class="n">edgesDest</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">M1</span> <span class="o">=</span> <span class="n">M</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">M1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span></div>
+
+<span class="c1"># randomly shuffle the rows and columns</span>
+<div class="viewcode-block" id="shuffleMatrix"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.shuffleMatrix">[docs]</a><span class="k">def</span> <span class="nf">shuffleMatrix</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span></div>
+
+
+<span class="c1"># reads matrix from file and returns sparse matrix. first 2 columns should be row and column indices</span>
+<span class="c1"># of ones.</span>
+<span class="c1"># @profile</span>
+<div class="viewcode-block" id="readData"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.readData">[docs]</a><span class="k">def</span> <span class="nf">readData</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="c1"># dat = np.genfromtxt(filename, delimiter=&#39;\t&#39;, dtype=int)</span>
+    <span class="n">edgesSource</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">edgesDest</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">toks</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">edgesSource</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">toks</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">edgesDest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">toks</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">listToSparseMatrix</span><span class="p">(</span><span class="n">edgesSource</span><span class="p">,</span> <span class="n">edgesDest</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="detectMultiple"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.detectMultiple">[docs]</a><span class="k">def</span> <span class="nf">detectMultiple</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">detectFunc</span><span class="p">,</span> <span class="n">numToDetect</span><span class="p">):</span>
+    <span class="n">Mcur</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">tolil</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numToDetect</span><span class="p">):</span>
+        <span class="p">((</span><span class="n">rowSet</span><span class="p">,</span> <span class="n">colSet</span><span class="p">),</span> <span class="n">score</span><span class="p">)</span> <span class="o">=</span> <span class="n">detectFunc</span><span class="p">(</span><span class="n">Mcur</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">rowSet</span><span class="p">,</span> <span class="n">colSet</span><span class="p">),</span> <span class="n">score</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="n">cs</span><span class="p">)</span> <span class="o">=</span> <span class="n">Mcur</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rs</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">rs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">rowSet</span> <span class="ow">and</span> <span class="n">cs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">colSet</span><span class="p">:</span>
+                <span class="n">Mcur</span><span class="p">[</span><span class="n">rs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cs</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="injectCliqueCamo"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.injectCliqueCamo">[docs]</a><span class="k">def</span> <span class="nf">injectCliqueCamo</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">n0</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">testIdx</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">M2</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">tolil</span><span class="p">()</span>
+
+    <span class="n">colSum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">M2</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">colSumPart</span> <span class="o">=</span> <span class="n">colSum</span><span class="p">[</span><span class="n">n0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">colSumPartPro</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">(</span><span class="n">colSumPart</span><span class="p">)</span>
+    <span class="n">colIdx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">colIdx</span><span class="p">,</span> <span class="n">colSumPartPro</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m0</span><span class="p">):</span>
+        <span class="c1"># inject clique</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n0</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">:</span>
+                <span class="n">M2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># inject camo</span>
+        <span class="k">if</span> <span class="n">testIdx</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">thres</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">n0</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">n0</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">thres</span><span class="p">:</span>
+                    <span class="n">M2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">testIdx</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">thres</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">n0</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">n0</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">thres</span><span class="p">:</span>
+                    <span class="n">M2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># biased camo</span>
+        <span class="k">if</span> <span class="n">testIdx</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">colRplmt</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n0</span> <span class="o">*</span> <span class="n">p</span><span class="p">))</span>
+            <span class="n">M2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">colRplmt</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">M2</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span></div>
+
+<span class="c1"># compute score as sum of 1- and 2- term interactions (currently just sum of matrix entries)</span>
+<div class="viewcode-block" id="c2Score"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.c2Score">[docs]</a><span class="k">def</span> <span class="nf">c2Score</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">rowSet</span><span class="p">,</span> <span class="n">colSet</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">M</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">rowSet</span><span class="p">),:][:,</span><span class="nb">list</span><span class="p">(</span><span class="n">colSet</span><span class="p">)]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="jaccard"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.jaccard">[docs]</a><span class="k">def</span> <span class="nf">jaccard</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span>
+    <span class="n">intersectSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">unionSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">intersectSize</span> <span class="o">/</span> <span class="n">unionSize</span></div>
+
+<div class="viewcode-block" id="getPrecision"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.getPrecision">[docs]</a><span class="k">def</span> <span class="nf">getPrecision</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span>
+    <span class="n">intersectSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">intersectSize</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="getRecall"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.getRecall">[docs]</a><span class="k">def</span> <span class="nf">getRecall</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span>
+    <span class="n">intersectSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">intersectSize</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">actual</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">actual</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="getFMeasure"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.getFMeasure">[docs]</a><span class="k">def</span> <span class="nf">getFMeasure</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span>
+    <span class="n">prec</span> <span class="o">=</span> <span class="n">getPrecision</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">getRecall</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="p">(</span><span class="n">prec</span> <span class="o">+</span> <span class="n">rec</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">prec</span> <span class="o">*</span> <span class="n">rec</span> <span class="o">/</span> <span class="p">(</span><span class="n">prec</span> <span class="o">+</span> <span class="n">rec</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="getRowPrecision"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.getRowPrecision">[docs]</a><span class="k">def</span> <span class="nf">getRowPrecision</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="n">intersectSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="n">idx</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">intersectSize</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="getRowRecall"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.getRowRecall">[docs]</a><span class="k">def</span> <span class="nf">getRowRecall</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="n">intersectSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">actual</span><span class="p">[</span><span class="n">idx</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">intersectSize</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">actual</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="getRowFMeasure"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.getRowFMeasure">[docs]</a><span class="k">def</span> <span class="nf">getRowFMeasure</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="n">prec</span> <span class="o">=</span> <span class="n">getRowPrecision</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">getRowRecall</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="p">(</span><span class="n">prec</span> <span class="o">+</span> <span class="n">rec</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">prec</span> <span class="o">*</span> <span class="n">rec</span> <span class="o">/</span> <span class="p">(</span><span class="n">prec</span> <span class="o">+</span> <span class="n">rec</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="sqrtWeightedAveDegree"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.sqrtWeightedAveDegree">[docs]</a><span class="k">def</span> <span class="nf">sqrtWeightedAveDegree</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">colSums</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">colWeights</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">colSums</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">colDiag</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">lil_matrix</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">colDiag</span><span class="o">.</span><span class="n">setdiag</span><span class="p">(</span><span class="n">colWeights</span><span class="p">)</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">M</span> <span class="o">*</span> <span class="n">colDiag</span>
+    <span class="k">return</span> <span class="n">fastGreedyDecreasing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">colWeights</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="logWeightedAveDegree"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.logWeightedAveDegree">[docs]</a><span class="k">def</span> <span class="nf">logWeightedAveDegree</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">colSums</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">colWeights</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">colSums</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">colDiag</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">lil_matrix</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">colDiag</span><span class="o">.</span><span class="n">setdiag</span><span class="p">(</span><span class="n">colWeights</span><span class="p">)</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">M</span> <span class="o">*</span> <span class="n">colDiag</span>
+    <span class="nb">print</span> <span class="s2">&quot;finished computing weight matrix&quot;</span>
+    <span class="k">return</span> <span class="n">fastGreedyDecreasing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">colWeights</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="aveDegree"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.aveDegree">[docs]</a><span class="k">def</span> <span class="nf">aveDegree</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">fastGreedyDecreasing</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="subsetAboveDegree"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.subsetAboveDegree">[docs]</a><span class="k">def</span> <span class="nf">subsetAboveDegree</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">col_thres</span><span class="p">,</span> <span class="n">row_thres</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+    <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">colSums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+    <span class="n">rowSums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">colValid</span> <span class="o">=</span> <span class="n">colSums</span> <span class="o">&gt;</span> <span class="n">col_thres</span>
+    <span class="n">rowValid</span> <span class="o">=</span> <span class="n">rowSums</span> <span class="o">&gt;</span> <span class="n">row_thres</span>
+    <span class="n">M1</span> <span class="o">=</span> <span class="n">M</span><span class="p">[:,</span> <span class="n">colValid</span><span class="p">]</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+    <span class="n">M2</span> <span class="o">=</span> <span class="n">M1</span><span class="p">[</span><span class="n">rowValid</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">rowFilter</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="n">rowValid</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">colFilter</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">colValid</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="n">M2</span><span class="p">,</span> <span class="n">rowFilter</span><span class="p">,</span> <span class="n">colFilter</span></div>
+
+
+<span class="c1"># @profile</span>
+<div class="viewcode-block" id="fastGreedyDecreasing"><a class="viewcode-back" href="../../../modules/fraudar.export.html#fraudar.export.greedy.fastGreedyDecreasing">[docs]</a><span class="k">def</span> <span class="nf">fastGreedyDecreasing</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">colWeights</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">Md</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">todok</span><span class="p">()</span>
+    <span class="n">Ml</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">tolil</span><span class="p">()</span>
+    <span class="n">Mlt</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolil</span><span class="p">()</span>
+    <span class="n">rowSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+    <span class="n">colSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">curScore</span> <span class="o">=</span> <span class="n">c2Score</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">rowSet</span><span class="p">,</span> <span class="n">colSet</span><span class="p">)</span>
+    <span class="n">bestAveScore</span> <span class="o">=</span> <span class="n">curScore</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rowSet</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">colSet</span><span class="p">))</span>
+    <span class="n">bestSets</span> <span class="o">=</span> <span class="p">(</span><span class="n">rowSet</span><span class="p">,</span> <span class="n">colSet</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;finished setting up greedy&quot;</span>
+    <span class="n">rowDeltas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="c1"># *decrease* in total weight when *removing* this row</span>
+    <span class="n">colDeltas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;finished setting deltas&quot;</span>
+    <span class="n">rowTree</span> <span class="o">=</span> <span class="n">MinTree</span><span class="p">(</span><span class="n">rowDeltas</span><span class="p">)</span>
+    <span class="n">colTree</span> <span class="o">=</span> <span class="n">MinTree</span><span class="p">(</span><span class="n">colDeltas</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;finished building min trees&quot;</span>
+
+    <span class="n">numDeleted</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">deleted</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">bestNumDeleted</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">rowSet</span> <span class="ow">and</span> <span class="n">colSet</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">colSet</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">rowSet</span><span class="p">))</span> <span class="o">%</span> <span class="mi">100000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="s2">&quot;current set size = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">colSet</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">rowSet</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">nextRow</span><span class="p">,</span> <span class="n">rowDelt</span><span class="p">)</span> <span class="o">=</span> <span class="n">rowTree</span><span class="o">.</span><span class="n">getMin</span><span class="p">()</span>
+        <span class="p">(</span><span class="n">nextCol</span><span class="p">,</span> <span class="n">colDelt</span><span class="p">)</span> <span class="o">=</span> <span class="n">colTree</span><span class="o">.</span><span class="n">getMin</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">rowDelt</span> <span class="o">&lt;=</span> <span class="n">colDelt</span><span class="p">:</span>
+            <span class="n">curScore</span> <span class="o">-=</span> <span class="n">rowDelt</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">Ml</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="n">nextRow</span><span class="p">]:</span>
+                <span class="n">delt</span> <span class="o">=</span> <span class="n">colWeights</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">colTree</span><span class="o">.</span><span class="n">changeVal</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="n">colWeights</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">rowSet</span> <span class="o">-=</span> <span class="p">{</span><span class="n">nextRow</span><span class="p">}</span>
+            <span class="n">rowTree</span><span class="o">.</span><span class="n">changeVal</span><span class="p">(</span><span class="n">nextRow</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">))</span>
+            <span class="n">deleted</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">nextRow</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">curScore</span> <span class="o">-=</span> <span class="n">colDelt</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Mlt</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="n">nextCol</span><span class="p">]:</span>
+                <span class="n">delt</span> <span class="o">=</span> <span class="n">colWeights</span><span class="p">[</span><span class="n">nextCol</span><span class="p">]</span>
+                <span class="n">rowTree</span><span class="o">.</span><span class="n">changeVal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="o">-</span><span class="n">colWeights</span><span class="p">[</span><span class="n">nextCol</span><span class="p">])</span>
+            <span class="n">colSet</span> <span class="o">-=</span> <span class="p">{</span><span class="n">nextCol</span><span class="p">}</span>
+            <span class="n">colTree</span><span class="o">.</span><span class="n">changeVal</span><span class="p">(</span><span class="n">nextCol</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">))</span>
+            <span class="n">deleted</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">nextCol</span><span class="p">))</span>
+
+        <span class="n">numDeleted</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">curAveScore</span> <span class="o">=</span> <span class="n">curScore</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">colSet</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">rowSet</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">curAveScore</span> <span class="o">&gt;</span> <span class="n">bestAveScore</span><span class="p">:</span>
+            <span class="n">bestAveScore</span> <span class="o">=</span> <span class="n">curAveScore</span>
+            <span class="n">bestNumDeleted</span> <span class="o">=</span> <span class="n">numDeleted</span>
+
+    <span class="c1"># reconstruct the best row and column sets</span>
+    <span class="n">finalRowSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+    <span class="n">finalColSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bestNumDeleted</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">deleted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">finalRowSet</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">deleted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">finalColSet</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">deleted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">finalRowSet</span><span class="p">,</span> <span class="n">finalColSet</span><span class="p">),</span> <span class="n">bestAveScore</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Junpei Kawamoto.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+<p>
+  <div class="addthis_inline_follow_toolbox"></div>
+</p>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f1fa5b740feddd"></script>
+
+
+</body>
+</html>
