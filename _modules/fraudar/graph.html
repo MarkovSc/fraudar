@@ -68,13 +68,16 @@
 <div class="viewcode-block" id="Reviewer"><a class="viewcode-back" href="../../modules/fraudar.html#fraudar.graph.Reviewer">[docs]</a><span class="k">class</span> <span class="nc">Reviewer</span><span class="p">(</span><span class="n">_Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A node type representing a reviewer.</span>
 
+<span class="sd">    Use :meth:`ReviewGraph.new_reviewer` to create a new reviewer object</span>
+<span class="sd">    instead of using this constructor directory.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">      graph: graph object this reviewer belongs to.</span>
 <span class="sd">      name: name of this reviewer.</span>
 
 <span class="sd">    Attributes:</span>
 <span class="sd">      name: name of this reviewer.</span>
-<span class="sd">      anomalous_score: anomalous score.</span>
+<span class="sd">      anomalous_score: anomalous score of this reviewer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;anomalous_score&quot;</span><span class="p">,)</span>
 
@@ -85,6 +88,9 @@
 
 <div class="viewcode-block" id="Product"><a class="viewcode-back" href="../../modules/fraudar.html#fraudar.graph.Product">[docs]</a><span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">_Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A node type representing a product.</span>
+
+<span class="sd">    Use :meth:`ReviewGraph.new_product` to create a new product object</span>
+<span class="sd">    instead of using this constructor directory.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      graph: graph object this product belongs to.</span>
@@ -214,4 +220,4 @@
             <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reviews</span><span class="p">[</span><span class="n">p</span><span class="p">]:</span>
                 <span class="n">i</span> <span class="o">=</span> <span class="n">bisect_left</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reviewers</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
                 <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span></div>
-</pre></div> </div> </div> <footer> <hr> <div role="contentinfo"> <p> &copy; Copyright 2016, Junpei Kawamoto. </p> </div> Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <p> </p><div class="addthis_inline_follow_toolbox"></div> <p></p> </footer> </div> </div> </section> </div> <script>var DOCUMENTATION_OPTIONS={URL_ROOT:"../../",VERSION:"0.6.0",COLLAPSE_INDEX:!1,FILE_SUFFIX:".html",HAS_SOURCE:!0,SOURCELINK_SUFFIX:".txt"}</script> <script src="../../_static/jquery.js"></script> <script src="../../_static/underscore.js"></script> <script src="../../_static/doctools.js"></script> <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> <script src="../../_static/js/theme.js"></script> <script>jQuery(function(){SphinxRtdTheme.StickyNav.enable()})</script> <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f1fa5b740feddd"></script> </body> </html>
+</pre></div> </div> <div class="articleComments"> </div> </div> <footer> <hr> <div role="contentinfo"> <p> &copy; Copyright 2016, Junpei Kawamoto. </p> </div> Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <p> </p><div class="addthis_inline_follow_toolbox"></div> <p></p> </footer> </div> </div> </section> </div> <script>var DOCUMENTATION_OPTIONS={URL_ROOT:"../../",VERSION:"0.6.0",COLLAPSE_INDEX:!1,FILE_SUFFIX:".html",HAS_SOURCE:!0,SOURCELINK_SUFFIX:".txt"}</script> <script src="../../_static/jquery.js"></script> <script src="../../_static/underscore.js"></script> <script src="../../_static/doctools.js"></script> <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> <script src="../../_static/js/theme.js"></script> <script>jQuery(function(){SphinxRtdTheme.StickyNav.enable()})</script> <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f1fa5b740feddd"></script> </body> </html>
