@@ -16,8 +16,8 @@ Subpackages
 Submodules
 ----------
 
-fraudar.graph module
---------------------
+fraudar\.graph module
+---------------------
 
 .. automodule:: fraudar.graph
     :members:

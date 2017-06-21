@@ -1,5 +1,5 @@
-fraudar.export package
-======================
+fraudar\.export package
+=======================
 
 .. automodule:: fraudar.export
     :members:
@@ -9,32 +9,32 @@ fraudar.export package
 Submodules
 ----------
 
-fraudar.export.MinTree module
------------------------------
+fraudar\.export\.MinTree module
+-------------------------------
 
 .. automodule:: fraudar.export.MinTree
     :members:
     :undoc-members:
     :show-inheritance:
 
-fraudar.export.greedy module
-----------------------------
+fraudar\.export\.greedy module
+------------------------------
 
 .. automodule:: fraudar.export.greedy
     :members:
     :undoc-members:
     :show-inheritance:
 
-fraudar.export.run_greedy module
---------------------------------
+fraudar\.export\.run\_greedy module
+-----------------------------------
 
 .. automodule:: fraudar.export.run_greedy
     :members:
     :undoc-members:
     :show-inheritance:
 
-fraudar.export.testMinTree module
----------------------------------
+fraudar\.export\.testMinTree module
+-----------------------------------
 
 .. automodule:: fraudar.export.testMinTree
     :members:
