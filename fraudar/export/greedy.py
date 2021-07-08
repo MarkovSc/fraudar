@@ -54,8 +54,8 @@ from fraudar.export.MinTree import MinTree
 
 from logging import getLogger
 logger = getLogger(__name__)
-
-np.set_printoptions(threshold='nan')
+import sys
+np.set_printoptions(threshold=sys.maxsize)
 np.set_printoptions(linewidth=160)
 
 # @profile
